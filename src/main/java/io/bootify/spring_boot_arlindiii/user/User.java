@@ -46,11 +46,16 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles = new ArrayList<>();
 
+<<<<<<< HEAD
 //    @OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE)
 //    private List<FormModel> formModels;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE)
     private List<FormModel>formModels;
+=======
+    @OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE)
+    private List<FormModel> formModels;
+>>>>>>> fb96a41cbe1c5dda5939dfa6b1aa1f5cb1c7fbe9
 
 
     @CreatedDate
@@ -62,11 +67,18 @@ public class User {
     private OffsetDateTime lastUpdated;
 
 
+<<<<<<< HEAD
         public User(String firstname, String lastname, String email, String password) {
+=======
+
+
+    public User(String firstname, String lastname, String email, String password, List<Role> roles) {
+>>>>>>> fb96a41cbe1c5dda5939dfa6b1aa1f5cb1c7fbe9
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.password = password;
+<<<<<<< HEAD
     }
 
 
@@ -97,6 +109,30 @@ public class User {
 //        this.password = password;
 //        this.roles = roles;
 //    }
+=======
+        this.roles = roles;
+    }
+
+    public User(Long id,String firstname, String lastname, String email, String password, List<Role> roles) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
+
+
+    public User(Long id,String firstname, String lastname, String email, String password, List<Role> roles,List<FormModel> formModels) {
+        this.formModels=formModels;
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
+>>>>>>> fb96a41cbe1c5dda5939dfa6b1aa1f5cb1c7fbe9
 
 
 

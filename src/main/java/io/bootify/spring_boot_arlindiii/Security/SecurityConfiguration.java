@@ -44,12 +44,21 @@ public class SecurityConfiguration {
 
 
 //    Responisble for authentication
+<<<<<<< HEAD
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         //It keeps information about authentication Manager
 //        System.out.println("We are inside AuthenticationManager in security");
         return authenticationConfiguration.getAuthenticationManager();
     }
+=======
+//    @Bean
+//    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+//        //It keeps information about authentication Manager
+////        System.out.println("We are inside AuthenticationManager in security");
+//        return authenticationConfiguration.getAuthenticationManager();
+//    }
+>>>>>>> fb96a41cbe1c5dda5939dfa6b1aa1f5cb1c7fbe9
 
     //Responsible for user details and encoding passwords
     @Bean

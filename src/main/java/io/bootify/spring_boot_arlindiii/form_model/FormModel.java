@@ -17,7 +17,10 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+<<<<<<< HEAD
 @Table(name = "FormModel")
+=======
+>>>>>>> fb96a41cbe1c5dda5939dfa6b1aa1f5cb1c7fbe9
 public class FormModel {
 
     @Id
@@ -45,6 +48,7 @@ public class FormModel {
     @Column
     private OffsetDateTime lastUpdated;
 
+<<<<<<< HEAD
     @Column
     private boolean complete;
 
@@ -59,6 +63,20 @@ public class FormModel {
         return complete;
     }
 
+=======
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
+
+
+//    public FormModel(String firstQuestion, String secondQuestion, String thirdQuestion, String forthQuestion, User user){
+//        this.user = user;
+//        this.firstQuestion = firstQuestion;
+//        this.secondQuestion = secondQuestion;
+//        this.thirdQuestion = thirdQuestion;
+//        this.forthQuestion = forthQuestion;
+//    }
+>>>>>>> fb96a41cbe1c5dda5939dfa6b1aa1f5cb1c7fbe9
 
     public FormModel(String firstQuestion, String secondQuestion, String thirdQuestion, String forthQuestion){
         this.firstQuestion = firstQuestion;
@@ -67,6 +85,17 @@ public class FormModel {
         this.forthQuestion = forthQuestion;
     }
 
+<<<<<<< HEAD
+=======
+//    public FormModel(Long id,String firstQuestion, String secondQuestion, String thirdQuestion, String forthQuestion, User user){
+//        this.id = id;
+//        this.user=user;
+//        this.firstQuestion = firstQuestion;
+//        this.secondQuestion = secondQuestion;
+//        this.thirdQuestion = thirdQuestion;
+//        this.forthQuestion = forthQuestion;
+//    }
+>>>>>>> fb96a41cbe1c5dda5939dfa6b1aa1f5cb1c7fbe9
 
 
 //    public void addUser(User u)
