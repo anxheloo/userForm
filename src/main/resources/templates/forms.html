@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Management System</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" th:href="@{/}">User Management System</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/forms}">Form Management</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<br>
+<div class="container">
+  <div class="row">
+    <h1>List Of Forms</h1>
+  </div>
+
+<!--  ADD FORM FEATURE-->
+  <div class="row">
+    <div class="col-lg-3">
+      <a th:href="@{/forms/new}" class="btn btn-primary-sm mb-3">Add Form</a>
+    </div>
+  </div>
+
+  <table class="table" table-striped table-bordered>
+
+    <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>First Question</th>
+      <th>Second Question</th>
+      <th>Third Question</th>
+      <th>Forth Question</th>
+      <th>Is Active</th>
+      <th>Created At</th>
+      <th>Last Date Updated</th>
+      <th>User Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="form: ${forms}">
+      <td th:text = "${form.id}"></td>
+      <td th:text = "${form.firstQuestion}"></td>
+      <td th:text = "${form.secondQuestion}"></td>
+      <td th:text = "${form.thirdQuestion}"></td>
+      <td th:text = "${form.forthQuestion}"></td>
+      <td>
+        <span th:if="${form.isComplete} == true" th:text="Yes"></span>
+        <span th:unless="${form.isComplete} == true" th:text="No"></span>
+      </td>
+
+      <td th:text="${form.dateCreated}">form_created_At</td>
+      <td th:text="${form.lastUpdated}">form_last_update</td>
+
+      <td>
+        <a th:href="@{/forms/edit/{id} (id=${form.id})}"
+           class="btn btn-primary">Update</a>
+
+        <a th:href="@{/forms/delete/{id} (id=${form.id})}"
+           class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+
+  </table>
+
+</div>
+
+
+</body>
+</html>

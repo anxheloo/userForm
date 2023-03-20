@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+  <title>Student Management System</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="/">Form Management</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/forms}">Form Management</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<br>
+<br>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+          <h1 class="text-center">Create New Form</h1>
+          <div class="card-body">
+            <form th:action="@{/forms}" th:object="${form}" method="post">
+                <div class="form-group">
+                  <label>1-Question</label>
+                  <input
+                          type="text"
+                          name="firstQuestion"
+                          th:field="*{firstQuestion}"
+                          class="form-control"
+                          placeholder="Enter your first question!">
+                </div>
+                <br>
+
+                <div class="form-group">
+                  <label>2-Question</label>
+                  <input
+                          type="text"
+                          name="secondQuestion"
+                          th:field="*{secondQuestion}"
+                          class="form-control"
+                          placeholder="Enter your second question!">
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                  <label>3-Question</label>
+                  <input
+                          type="text"
+                          name="thirdQuestion"
+                          th:field="*{thirdQuestion}"
+                          class="form-control"
+                          placeholder="Enter your third question!">
+                </div>
+                <br>
+
+                <div class="form-group">
+                  <label>4-Question</label>
+                  <input
+                          type="text"
+                          name="forthQuestion"
+                          th:field="*{forthQuestion}"
+                          class="form-control"
+                          placeholder="Enter your forth question!">
+                </div>
+                <br>
+
+<!--                <div class="col-6 form-check" id="inputIsComplete">-->
+<!--                  <input class="form-check-input"-->
+<!--                         type="checkbox"-->
+<!--                         id="complete"-->
+<!--                         th:field="*{complete}"-->
+<!--                         th:checked="${complete} == true"-->
+<!--                  >-->
+
+<!--                              <label class="form-check-label" for="inputIsComplete">Completed?</label>-->
+<!--                </div>-->
+
+                <input type="hidden" th:field="*{dateCreated}"/>
+                <input type="hidden" th:field="*{lastUpdated}"/>
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+
+
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+
+</body>
+</html>
