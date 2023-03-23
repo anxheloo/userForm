@@ -35,8 +35,6 @@ public class FormController {
     }
 
 
-
-    //WAY 2
     @GetMapping("/new")
     public String showCreateForm(Model model) {
 
@@ -46,35 +44,15 @@ public class FormController {
     }
 
 
-//    //WAY 1
-//        @PostMapping
-//        public String createForm(@Valid FormModel formModel, BindingResult result, Model model)
-//        {
-//            FormModel form = new FormModel();
-//            form.setComplete(formModel.isComplete());
-//            form.setLastUpdated(formModel.getLastUpdated());
-//            form.setFirstQuestion(formModel.getFirstQuestion());
-//            form.setSecondQuestion(formModel.getSecondQuestion());
-//            form.setThirdQuestion(formModel.getThirdQuestion());
-//            form.setForthQuestion(formModel.getForthQuestion());
-//            System.out.println(form.toString());
-//            formModelService.save(form);
-//
-//            System.out.println(form.toString());
-//            return "redirect:/forms";
-//        }
-
     @PostMapping
     public String saveForm(@ModelAttribute("form") FormModel form)
     {
         form.setComplete(form.isComplete());
         form.setDateCreated(OffsetDateTime.now());
         form.setLastUpdated(OffsetDateTime.now());
-//        form.setUser();
         formModelService.save(form);
         return "redirect:/forms";
     }
-
 
 
     @GetMapping("/delete/{id}")
@@ -94,15 +72,6 @@ public class FormController {
     }
 
 
-//    @GetMapping("/{id}")
-//    public String showUpdateForm(@PathVariable("id") Long id, Model model) {
-//        FormModel formModel = formModelService.getById(id)
-//                .orElseThrow(() -> new IllegalArgumentException("FormModel id: " + id + " not found!"));
-//
-//        model.addAttribute("form", formModel);
-//        return "edit_form";
-//    }
-
     @GetMapping("/edit/{id}")
     public String editForm(@PathVariable("id") Long id,Model model)
     {
@@ -111,7 +80,6 @@ public class FormController {
     }
 
 
-    //BindingResult result,
 
     @PostMapping("/{id}")
     public String updateForm(@PathVariable Long id, @ModelAttribute("form") FormModel form, Model model) {

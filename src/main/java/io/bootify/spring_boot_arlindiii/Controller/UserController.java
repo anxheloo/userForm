@@ -52,11 +52,8 @@ public class UserController {
     @PostMapping("/{id}")
     public String updateUser(@PathVariable Long id, @ModelAttribute("user") User user,Model model)
     {
-<<<<<<< HEAD
+
         //get user from database by id
-=======
-        //get student from database by id
->>>>>>> fb96a41cbe1c5dda5939dfa6b1aa1f5cb1c7fbe9
         User existingUser = userService.get(id);
         existingUser.setId(id);
         existingUser.setFirstname(user.getFirstname());

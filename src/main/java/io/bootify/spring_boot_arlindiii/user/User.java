@@ -39,23 +39,14 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles = new ArrayList<>();
 
-<<<<<<< HEAD
-//    @OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE)
-//    private List<FormModel> formModels;
-
-    @OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE)
-    private List<FormModel>formModels;
-=======
-    @OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<FormModel> formModels;
->>>>>>> fb96a41cbe1c5dda5939dfa6b1aa1f5cb1c7fbe9
 
 
     @CreatedDate
@@ -67,83 +58,22 @@ public class User {
     private OffsetDateTime lastUpdated;
 
 
-<<<<<<< HEAD
-        public User(String firstname, String lastname, String email, String password) {
-=======
-
-
-    public User(String firstname, String lastname, String email, String password, List<Role> roles) {
->>>>>>> fb96a41cbe1c5dda5939dfa6b1aa1f5cb1c7fbe9
+    public User(String firstname, String lastname, String email, String password) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.password = password;
-<<<<<<< HEAD
     }
 
 
-//    public User(String firstname, String lastname, String email, String password, List<Role> roles) {
-//        this.firstname = firstname;
-//        this.lastname = lastname;
-//        this.email = email;
-//        this.password = password;
-//        this.roles = roles;
-//    }
-//
-//    public User(Long id,String firstname, String lastname, String email, String password, List<Role> roles) {
-//        this.id = id;
-//        this.firstname = firstname;
-//        this.lastname = lastname;
-//        this.email = email;
-//        this.password = password;
-//        this.roles = roles;
-//    }
-
-
-//    public User(Long id,String firstname, String lastname, String email, String password, List<Role> roles,List<FormModel> formModels) {
-//        this.formModels=formModels;
-//        this.id = id;
-//        this.firstname = firstname;
-//        this.lastname = lastname;
-//        this.email = email;
-//        this.password = password;
-//        this.roles = roles;
-//    }
-=======
-        this.roles = roles;
-    }
-
-    public User(Long id,String firstname, String lastname, String email, String password, List<Role> roles) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.password = password;
-        this.roles = roles;
-    }
-
-
-    public User(Long id,String firstname, String lastname, String email, String password, List<Role> roles,List<FormModel> formModels) {
-        this.formModels=formModels;
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.password = password;
-        this.roles = roles;
-    }
->>>>>>> fb96a41cbe1c5dda5939dfa6b1aa1f5cb1c7fbe9
-
-
-
-    public void addRoles(Role role)
+    public void addRoles (Role role)
     {
         System.out.println("We are inside the addRoles Method That is called by user");
         roles.add(role);
     }
 
 
-    public void addForms(FormModel forms)
+    public void addForms (FormModel forms)
     {
         System.out.println("We are inside the addForms Method That is called by user");
         formModels.add(forms);

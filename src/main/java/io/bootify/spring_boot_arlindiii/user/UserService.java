@@ -1,105 +1,4 @@
 package io.bootify.spring_boot_arlindiii.user;//package io.bootify.spring_boot_arlindiii.user;
-//
-//import io.bootify.spring_boot_arlindiii.form_model.FormModel;
-//import io.bootify.spring_boot_arlindiii.form_model.FormModelRepository;
-//import io.bootify.spring_boot_arlindiii.role.Role;
-//import io.bootify.spring_boot_arlindiii.role.RoleRepository;
-//import io.bootify.spring_boot_arlindiii.util.NotFoundException;
-//import io.bootify.spring_boot_arlindiii.util.WebUtils;
-//import jakarta.transaction.Transactional;
-//import java.util.Collections;
-//import java.util.List;
-//import java.util.stream.Collectors;
-//import org.springframework.data.domain.Sort;
-//import org.springframework.stereotype.Service;
-//
-//
-//@Transactional
-//@Service
-//public class UserService {
-//
-//    private final UserRepository userRepository;
-//    private final RoleRepository roleRepository;
-//    private final FormModelRepository formModelRepository;
-//
-//    public UserService(final UserRepository userRepository, final RoleRepository roleRepository,
-//            final FormModelRepository formModelRepository) {
-//        this.userRepository = userRepository;
-//        this.roleRepository = roleRepository;
-//        this.formModelRepository = formModelRepository;
-//    }
-//
-//    public List<UserDTO> findAll() {
-//        final List<User> users = userRepository.findAll(Sort.by("id"));
-//        return users.stream()
-//                .map((user) -> mapToDTO(user, new UserDTO()))
-//                .toList();
-//    }
-//
-//    public UserDTO get(final Long id) {
-//        return userRepository.findById(id)
-//                .map(user -> mapToDTO(user, new UserDTO()))
-//                .orElseThrow(NotFoundException::new);
-//    }
-//
-//    public Long create(final UserDTO userDTO) {
-//        final User user = new User();
-//        mapToEntity(userDTO, user);
-//        return userRepository.save(user).getId();
-//    }
-//
-//    public void update(final Long id, final UserDTO userDTO) {
-//        final User user = userRepository.findById(id)
-//                .orElseThrow(NotFoundException::new);
-//        mapToEntity(userDTO, user);
-//        userRepository.save(user);
-//    }
-//
-//    public void delete(final Long id) {
-//        userRepository.deleteById(id);
-//    }
-//
-//    private UserDTO mapToDTO(final User user, final UserDTO userDTO) {
-//        userDTO.setId(user.getId());
-//        userDTO.setFirstname(user.getFirstname());
-//        userDTO.setLastname(user.getLastname());
-//        userDTO.setEmail(user.getEmail());
-//        userDTO.setPassword(user.getPassword());
-//        userDTO.setRoles(user.getRoles() == null ? null : user.getRoles().stream()
-//                .map(role -> role.getId())
-//                .toList());
-//        return userDTO;
-//    }
-//
-//    private User mapToEntity(final UserDTO userDTO, final User user) {
-//        user.setFirstname(userDTO.getFirstname());
-//        user.setLastname(userDTO.getLastname());
-//        user.setEmail(userDTO.getEmail());
-//        user.setPassword(userDTO.getPassword());
-//        final List<Role> roles = roleRepository.findAllById(
-//                userDTO.getRoles() == null ? Collections.emptyList() : userDTO.getRoles());
-//        if (roles.size() != (userDTO.getRoles() == null ? 0 : userDTO.getRoles().size())) {
-//            throw new NotFoundException("one of roles not found");
-//        }
-//        user.setRoles(roles.stream().collect(Collectors.toSet()));
-//        return user;
-//    }
-//
-//    public boolean emailExists(final String email) {
-//        return userRepository.existsByEmailIgnoreCase(email);
-//    }
-//
-//    public String getReferencedWarning(final Long id) {
-//        final User user = userRepository.findById(id)
-//                .orElseThrow(NotFoundException::new);
-//        final FormModel userFormModel = formModelRepository.findFirstByUser(user);
-//        if (userFormModel != null) {
-//            return WebUtils.getMessage("user.formModel.user.referenced", userFormModel.getId());
-//        }
-//        return null;
-//    }
-//
-//}
 
 import io.bootify.spring_boot_arlindiii.form_model.FormModel;
 import io.bootify.spring_boot_arlindiii.form_model.FormModelRepository;
@@ -189,21 +88,14 @@ public class UserService {
 
     public void delete(Long id) throws Exception {
         User user = userRepository.findById(id).get();
-//        FormModel model = formModelRepository.findFirstByUser(user);
-
-        if (user == null)
-        {
-            throw new NotFoundException("User with id: " + id +" not found!");
-        }
 
         try {
             if (user.getRoles().stream().anyMatch(role -> role.getName().equals("Admin") || role.getName().equals("admin") || role.getName().equals("ROLE_Admin") )) {
                 throw new IllegalArgumentException("You cannot delete an admin user.");
 
             } else {
-//                formModelRepository.delete(model);
-                userRepository.delete(user);
-//                userRepository.deleteById(id);
+
+                userRepository.deleteById(id);
             }
 
         } catch (Exception e)

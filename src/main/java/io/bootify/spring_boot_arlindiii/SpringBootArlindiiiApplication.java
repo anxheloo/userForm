@@ -64,17 +64,7 @@ public class SpringBootArlindiiiApplication implements CommandLineRunner {
 		roleRepository.save(role2);
 
 
-<<<<<<< HEAD
-//            FormModel form1 = new FormModel("Whats your day?","How was your day","What is the day?","How many days?");
-//            form1.setDateCreated(OffsetDateTime.now());
-//            formModelRepository.save(form1);
-//
-//            FormModel form2 = new FormModel("Whats your day?","How was your day","What is the day?","How many days?");
-//            form2.setDateCreated(OffsetDateTime.now());
-//            formModelRepository.save(form2);
-
-
-//            Create Admin role to test the app
+//      Create Admin role to test the app
 		User admin = new User("Nixhi","Nixhi","nixhi@gmail.com", passwordEncoder.encode("nixhi123"));
         admin.setDateCreated(OffsetDateTime.now());
         admin.setRoles(Arrays.asList(role2));
@@ -98,38 +88,6 @@ public class SpringBootArlindiiiApplication implements CommandLineRunner {
         form2.setDateCreated(OffsetDateTime.now());
         form2.setLastUpdated(OffsetDateTime.now());
         formModelRepository.save(form2);
-=======
-            FormModel form1 = new FormModel("Whats your day?","How was your day","What is the day?","How many days?");
-            form1.setDateCreated(OffsetDateTime.now());
-            formModelRepository.save(form1);
-
-            FormModel form2 = new FormModel("Whats your day?","How was your day","What is the day?","How many days?");
-            form2.setDateCreated(OffsetDateTime.now());
-            formModelRepository.save(form2);
-
-
-//            Create Admin role to test the app
-		User admin = new User("Nixhi","Nixhi","nixhi@gmail.com", passwordEncoder.encode("nixhi123"), Arrays.asList(role2));
-        admin.setDateCreated(OffsetDateTime.now());
-		userRepository.save(admin);
-
-		User user = new User("Noel","Ceno","noel@gmail.com", passwordEncoder.encode("noel123"), Arrays.asList(role1));
-        user.setDateCreated(OffsetDateTime.now());
-        user.addForms(form1);
-        user.addForms(form2);
-		userRepository.save(user);
-
-
-//        FormModel form1 = new FormModel("Whats your day?","How was your day","What is the day?","How many days?",user);
-//        form1.setDateCreated(OffsetDateTime.now());
-//        formModelRepository.save(form1);
-//
-//        FormModel form2 = new FormModel("Whats your day?","How was your day","What is the day?","How many days?",user);
-//        form2.setDateCreated(OffsetDateTime.now());
-//        formModelRepository.save(form2);
->>>>>>> fb96a41cbe1c5dda5939dfa6b1aa1f5cb1c7fbe9
-
-
 
         }
 
